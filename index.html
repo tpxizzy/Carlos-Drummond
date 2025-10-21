@@ -1,935 +1,216 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carlos Drummond de Andrade - Poesia, Cidade e Mineração</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Roboto", sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Georgia, 'Times New Roman', serif;
-            background: #f8f7f4;
-            color: #1a1a1a;
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        header {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: #fff;
-            padding: 3rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
-
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 3%;
-            text-align: center;
-        }
-
-        .site-title {
-            font-size: 2.8rem;
-            font-weight: normal;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .site-subtitle {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 1.1rem;
-            opacity: 0.9;
-            letter-spacing: 1px;
-        }
-
-        nav {
-            margin-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            padding-top: 1.5rem;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: all 0.3s;
-            padding: 0.5rem 1rem;
-            border-radius: 3px;
-        }
-
-        nav a:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-2px);
-        }
- 
-        .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
-                  url('img/banner.png'); 
-            
-            background-position: center;
-            background-attachment: fixed;
-            color: #fff;
-            padding: 8rem 3%;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: normal;
-            line-height: 1.3;
-            margin-bottom: 2rem;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-        }
-
-        .hero-quote {
-            font-size: 1.5rem;
-            font-style: italic;
-            line-height: 1.6;
-            opacity: 0.95;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero-author {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 1rem;
-            opacity: 0.8;
-            letter-spacing: 2px;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 5rem 3%;
-        }
-
-        .section {
-            margin-bottom: 6rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 3px solid #2c3e50;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: normal;
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 1.1rem;
-            color: #666;
-            letter-spacing: 1px;
-        }
-
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(to bottom, #2c3e50, #34495e);
-        }
-
-        .timeline-item {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            grid-column: 1;
-            text-align: right;
-        }
-
-        .timeline-item:nth-child(even) .timeline-image {
-            grid-column: 2;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content {
-            grid-column: 2;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-image {
-            grid-column: 1;
-            grid-row: 1;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            top: 2rem;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: #2c3e50;
-            border: 4px solid #f8f7f4;
-            border-radius: 50%;
-            z-index: 10;
-        }
-
-        .timeline-year {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-text {
-            font-size: 1.05rem;
-            color: #333;
-            line-height: 1.8;
-        }
-
-        .timeline-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-            transition: transform 0.3s;
-        }
-
-        .timeline-image:hover {
-            transform: scale(0.9);
-        }
-
-        .phases-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .phase-card {
-            background: #fff;
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            border-left: 5px solid #2c3e50;
-        }
-
-        .phase-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .phase-number {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 3rem;
-            font-weight: bold;
-            color: #2c3e50;
-            opacity: 0.2;
-            margin-bottom: -1rem;
-        }
-
-        .phase-title {
-            font-size: 1.8rem;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-
-        .phase-period {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 0.9rem;
-            color: #999;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1.5rem;
-        }
-
-        .phase-description {
-            font-size: 1.05rem;
-            color: #555;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .phase-themes {
-            background: #f8f7f4;
-            padding: 1rem;
-            border-radius: 5px;
-            margin-bottom: 1.5rem;
-        }
-
-        .phase-themes strong {
-            color: #2c3e50;
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .poem-box {
-            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
-            color: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            margin-top: 1.5rem;
-            font-style: italic;
-            line-height: 1.8;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .poem-title {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 1.1rem;
-            font-style: normal;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-            letter-spacing: 1px;
-        }
-
-        .itabira-section {
-            background: #fff;
-            padding: 3rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .itabira-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-
-        .itabira-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-        }
-
-        .itabira-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #333;
-        }
-
-        .itabira-text h3 {
-            color: #2c3e50;
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-        }
-
-        .impact-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .impact-card {
-            background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
-            color: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .impact-card:nth-child(2) {
-            background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
-        }
-
-        .impact-card:nth-child(3) {
-            background: linear-gradient(135deg, #16a085 0%, #1abc9c 100%);
-        }
-
-        .impact-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .impact-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .impact-title {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .impact-text {
-            font-size: 0.95rem;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        .reflection-box {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: #fff;
-            padding: 3rem;
-            border-radius: 8px;
-            margin-top: 3rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        }
-
-        .reflection-box h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .reflection-box p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        footer {
-            background: #2c3e50;
-            color: #fff;
-            padding: 3rem 3%;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .footer-info {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 0.9rem;
-            line-height: 2;
-            margin-bottom: 1rem;
-        }
-
-        .footer-credits {
-            opacity: 0.7;
-            font-size: 0.85rem;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-        }
-
-        @media (max-width: 1024px) {
-            .phases-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline-item {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline::before {
-                left: 0;
-            }
-
-            .timeline-dot {
-                left: 0;
-            }
-
-            .timeline-item:nth-child(even) .timeline-content,
-            .timeline-item:nth-child(odd) .timeline-content {
-                grid-column: 1;
-                text-align: left;
-                padding-left: 3rem;
-            }
-
-            .timeline-item:nth-child(even) .timeline-image,
-            .timeline-item:nth-child(odd) .timeline-image {
-                grid-column: 1;
-            }
-
-            .itabira-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .impact-cards {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-quote {
-                font-size: 1.2rem;
-            }
-
-            .site-title {
-                font-size: 2rem;
-            }
-
-            nav ul {
-                gap: 1rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carlos Drummond de Andrade - Poesia, Cidade e Mineração</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ====== RESET ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Roboto", sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: #f8f7f4;
+      color: #1a1a1a;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ====== HEADER (compacto e equilibrado) ====== */
+    header {
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      color: #fff;
+      padding: 1.6rem 0; /* altura reduzida */
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 3%;
+      text-align: center;
+    }
+
+    .site-title {
+      font-size: 2.3rem; /* menor */
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.3rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .site-subtitle {
+      font-size: 1rem;
+      opacity: 0.85;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    nav {
+      margin-top: 0.8rem; /* menos espaço */
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 0.6rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: all 0.3s ease;
+      padding: 0.4rem 0.8rem;
+      border-radius: 3px;
+    }
+
+    nav a:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+
+    /* ====== HERO ====== */
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('img/banner.png') center/cover fixed;
+      color: #fff;
+      padding: 8rem 3%;
+      text-align: center;
+    }
+
+    .hero-content { max-width: 900px; margin: 0 auto; }
+
+    .hero-title {
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+    }
+
+    .hero-quote {
+      font-size: 1.5rem;
+      font-style: italic;
+      opacity: 0.95;
+      margin-bottom: 1rem;
+    }
+
+    .hero-author {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+
+    /* ====== CONTAINERS ====== */
+    .container { max-width: 1400px; margin: 0 auto; padding: 5rem 3%; }
+
+    .section { margin-bottom: 6rem; }
+    .section-header { text-align: center; margin-bottom: 3rem; padding-bottom: 1.5rem; border-bottom: 3px solid #2c3e50; }
+    .section-title { font-size: 2.5rem; color: #2c3e50; margin-bottom: 1rem; }
+    .section-subtitle { font-size: 1.1rem; color: #666; }
+
+    /* ====== REFLEXÃO ====== */
+    .reflection-box {
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      color: #fff;
+      padding: 3rem;
+      border-radius: 8px;
+      margin-top: 3rem;
+    }
+
+    /* ====== FOOTER ====== */
+    footer {
+      background: #2c3e50;
+      color: #fff;
+      padding: 3rem 3%;
+      text-align: center;
+      margin-top: 5rem;
+    }
+
+    .footer-credits {
+      opacity: 0.7;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      padding-top: 1rem;
+    }
+
+    /* ====== RESPONSIVO ====== */
+    @media (max-width: 768px) {
+      .site-title { font-size: 1.9rem; }
+      nav ul { gap: 1rem; }
+      .hero-title { font-size: 2.5rem; }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <div class="header-content">
-            <h1 class="site-title">Carlos Drummond de Andrade</h1>
-            <p class="site-subtitle">Poesia, Cidade e Mineração</p>
-            <nav>
-                <ul>
-                    <li><a href="#home">Início</a></li>
-                    <li><a href="#biografia">Biografia</a></li>
-                    <li><a href="#fases">Fases Literárias</a></li>
-                    <li><a href="#itabira">Itabira & Mineração</a></li>
-                    <li><a href="#reflexao">Reflexões</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <section class="hero-section" id="home">
-        <div class="hero-content">
-            <h2 class="hero-title">O Poeta da Pedra</h2>
-            <p class="hero-quote">"No meio do caminho tinha uma pedra<br>tinha uma pedra no meio do caminho<br>tinha uma pedra<br>no meio do caminho tinha uma pedra."</p>
-            <p class="hero-author">— Alguma Poesia, 1928</p>
-        </div>
-    </section>
-
-    <div class="container">
-        <section class="section" id="biografia">
-            <div class="section-header">
-                <h2 class="section-title">Biografia</h2>
-                <p class="section-subtitle">A trajetória de um dos maiores poetas brasileiros</p>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-year">1902</div>
-                        <p class="timeline-text">Carlos Drummond de Andrade nasce em 31 de outubro, em Itabira, Minas Gerais. Filho de fazendeiros, cresce em uma cidade marcada pela mineração de ferro, experiência que moldará profundamente sua poesia.</p>
-                    </div>
-                    <img src="img/702142-400x600-1.jpeg" alt="Itabira histórica" class="timeline-image">
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-year">1928</div>
-                        <p class="timeline-text">Publica "Alguma Poesia", sua primeira obra, que causa impacto com o famoso poema "No meio do caminho". O livro marca o início do Modernismo em sua poesia, rompendo com a tradição parnasiana.</p>
-                    </div>
-                    <img src="img/2012011973202.jpg" alt="Literatura modernista" class="timeline-image">
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-year">1945</div>
-                        <p class="timeline-text">Lança "A Rosa do Povo", obra de forte engajamento político e social. O poeta expressa suas preocupações com os acontecimentos da Segunda Guerra Mundial e com as questões sociais do Brasil.</p>
-                    </div>
-                    <img src="img/carlos-drummond-de-andrade.png" alt="Contexto histórico" class="timeline-image">
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-year">1951-1984</div>
-                        <p class="timeline-text">Fase madura e memorialista. Publica obras como "Claro Enigma" (1951), "Boitempo" (1968-1979) e outras que exploram a memória, o tempo e a existência humana. Torna-se o poeta mais celebrado do Brasil.</p>
-                    </div>
-                    <img src="img/Drummond em 1959. Foto Marcel Gautherot IMS.jpg" alt="Maturidade literária" class="timeline-image">
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-year">1987</div>
-                        <p class="timeline-text">Drummond falece em 17 de agosto, no Rio de Janeiro, doze dias após a morte de sua filha única, Maria Julieta. Deixa um legado inestimável de mais de 50 livros publicados.</p>
-                    </div>
-                    <img src="img/drummond1.png" alt="Legado literário" class="timeline-image">
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="fases">
-            <div class="section-header">
-                <h2 class="section-title">As Quatro Fases Literárias</h2>
-                <p class="section-subtitle">A evolução poética de Drummond ao longo das décadas</p>
-            </div>
-
-            <div class="phases-grid">
-                <div class="phase-card">
-                    <div class="phase-number">01</div>
-                    <h3 class="phase-title">Fase Gauche</h3>
-                    <p class="phase-period">1928-1934</p>
-                    <p class="phase-description">Caracterizada pelo individualismo irônico e pelo sentimento de inadequação ao mundo. O poeta assume uma postura crítica, questionadora e por vezes pessimista diante da realidade.</p>
-                    <div class="phase-themes">
-                        <strong>Temas principais:</strong> Inadaptação social, ironia, ceticismo, conflito entre indivíduo e sociedade, modernização urbana.
-                    </div>
-                    <div class="poem-box">
-                        <div class="poem-title">Poema das Sete Faces (trecho)</div>
-                        "Quando nasci, um anjo torto<br>
-                        desses que vivem na sombra<br>
-                        disse: Vai, Carlos! ser gauche na vida."
-                    </div>
-                </div>
-
-                <div class="phase-card">
-                    <div class="phase-number">02</div>
-                    <h3 class="phase-title">Fase Social</h3>
-                    <p class="phase-period">1940-1945</p>
-                    <p class="phase-description">Marcada pelo engajamento político e social. Influenciado pela Segunda Guerra Mundial e pelas injustiças sociais, Drummond volta sua poesia para as questões coletivas e históricas.</p>
-                    <div class="phase-themes">
-                        <strong>Temas principais:</strong> Consciência política, solidariedade humana, crítica social, guerra, esperança na transformação social.
-                    </div>
-                    <div class="poem-box">
-                        <div class="poem-title">A Rosa do Povo (trecho)</div>
-                        "E como ficou chato ser moderno.<br>
-                        Agora serei eterno."
-                    </div>
-                </div>
-
-                <div class="phase-card">
-                    <div class="phase-number">03</div>
-                    <h3 class="phase-title">Fase Metafísica</h3>
-                    <p class="phase-period">1951-1959</p>
-                    <p class="phase-description">Retorno à introspecção, mas com uma perspectiva mais filosófica e existencial. O poeta explora questões sobre o tempo, a morte, o sentido da vida e a condição humana com profundidade reflexiva.</p>
-                    <div class="phase-themes">
-                        <strong>Temas principais:</strong> Existência humana, passagem do tempo, finitude, memória, busca de sentido, transcendência.
-                    </div>
-                    <div class="poem-box">
-                        <div class="poem-title">Claro Enigma (trecho)</div>
-                        "As coisas. Que tristes são as coisas, consideradas sem ênfase."
-                    </div>
-                </div>
-
-                <div class="phase-card">
-                    <div class="phase-number">04</div>
-                    <h3 class="phase-title">Fase Memorialista</h3>
-                    <p class="phase-period">1960-1987</p>
-                    <p class="phase-description">O poeta revisita suas origens, especialmente Itabira e a infância. A memória torna-se tema central, com reflexões sobre o passado pessoal e coletivo, sempre com lirismo e nostalgia.</p>
-                    <div class="phase-themes">
-                        <strong>Temas principais:</strong> Infância, Itabira, memória afetiva, família, raízes mineiras, transformações do tempo.
-                    </div>
-                    <div class="poem-box">
-                        <div class="poem-title">Boitempo (trecho)</div>
-                        "A máquina do mundo se entreabriu<br>
-                        para quem de a romper já se esquivava<br>
-                        e só de o ter pensado se carpia."
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="itabira">
-            <div class="section-header">
-                <h2 class="section-title">Itabira e a Mineração</h2>
-                <p class="section-subtitle">A cidade de ferro que moldou o poeta</p>
-            </div>
-
-            <div class="itabira-section">
-                <div class="itabira-grid">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1611348524140-53c9a25263d6?w=600&h=400&fit=crop" alt="Mineração" class="itabira-image">
-                    </div>
-                    <div class="itabira-text">
-                        <h3>A Cidade Natal</h3>
-                        <p>Itabira, localizada no interior de Minas Gerais, é conhecida como a "Capital do Minério de Ferro". A cidade nasceu e cresceu em torno da exploração mineral, atividade que remonta ao século XVIII.</p>
-                        <p>Para Drummond, Itabira não era apenas sua cidade natal, mas um símbolo complexo que entrelaçava memória pessoal, identidade cultural e crítica social. A mineração aparece em sua obra como metáfora da exploração, da transformação e da perda.</p>
-                    </div>
-                </div>
-
-                <div class="itabira-grid" style="margin-top: 3rem;">
-                    <div class="itabira-text">
-                        <h3>O Ferro na Poesia</h3>
-                        <p>O ferro e a pedra de Itabira permeiam toda a obra drummondiana. Em "Confidência do Itabirano", o poeta declara: "Tive ouro, tive gado, tive fazendas. / Hoje sou funcionário público. / Itabira é apenas uma fotografia na parede."</p>
-                        <p>A mineração representa tanto a riqueza material quanto a devastação ambiental e social. Drummond testemunhou a transformação de sua cidade natal pela indústria mineradora, tema que ganha tons nostálgicos e críticos em seus versos.</p>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=600&h=400&fit=crop" alt="Paisagem mineira" class="itabira-image">
-                    </div>
-                </div>
-
-                <div class="impact-cards">
-                    <div class="impact-card">
-                        <div class="impact-icon">🏭</div>
-                        <h4 class="impact-title">Impacto Econômico</h4>
-                        <p class="impact-text">A mineração trouxe desenvolvimento econômico para Itabira, mas também gerou dependência e desigualdade. Drummond critica essa dualidade em sua obra.</p>
-                    </div>
-                    <div class="impact-card">
-                        <div class="impact-icon">🌳</div>
-                        <h4 class="impact-title">Impacto Ambiental</h4>
-                        <p class="impact-text">A exploração mineral transformou radicalmente a paisagem de Itabira. O poeta lamenta a perda das fazendas e da natureza de sua infância.</p>
-                    </div>
-                    <div class="impact-card">
-                        <div class="impact-icon">👥</div>
-                        <h4 class="impact-title">Impacto Social</h4>
-                        <p class="impact-text">A mineração alterou profundamente as relações sociais e a cultura local, temas que Drummond explora com sensibilidade em suas memórias poéticas.</p>
-                    </div>
-                </div>
-
-                <div class="poem-box" style="margin-top: 3rem;">
-                    <div class="poem-title">Confidência do Itabirano</div>
-                    "Alguns anos vivi em Itabira.<br>
-                    Principalmente nasci em Itabira.<br>
-                    Por isso sou triste, orgulhoso: de ferro.<br>
-                    Noventa por cento de ferro nas calçadas.<br>
-                    Oitenta por cento de ferro nas almas.<br><br>
-                    
-                    E esse alheamento do que na vida é porosidade e comunicação.<br><br>
-                    
-                    A vontade de amar, que me paralisa o trabalho,<br>
-                    vem de Itabira, de suas noites brancas, sem mulheres e sem horizontes.<br><br>
-                    
-                    E o hábito de sofrer, que tanto me diverte,<br>
-                    é doce herança itabirana."
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="reflexao">
-            <div class="section-header">
-                <h2 class="section-title">Reflexões Contemporâneas</h2>
-                <p class="section-subtitle">Drummond e os desafios atuais</p>
-            </div>
-
-            <div class="reflection-box">
-                <h3>A Atualidade de Drummond</h3>
-                <p>A poesia de Carlos Drummond de Andrade permanece surpreendentemente atual. Seus temas atravessam décadas e continuam ressoando com força no século XXI. O sentimento de inadequação do "gauche" se conecta com as ansiedades da vida moderna; sua crítica à mineração antecipa debates ambientais contemporâneos, especialmente após tragédias como as de Mariana (2015) e Brumadinho (2019).</p>
-                
-                <p>A relação conflituosa entre desenvolvimento econômico e preservação ambiental, tão presente em sua obra ao falar de Itabira, tornou-se um dos maiores dilemas da nossa época. A "pedra no meio do caminho" pode ser lida como metáfora dos obstáculos que enfrentamos individual e coletivamente.</p>
-                
-                <p>Drummond nos ensina que a poesia não é fuga da realidade, mas mergulho profundo nela. Sua capacidade de transformar o particular (Itabira, suas memórias) em universal (a condição humana) faz dele um poeta atemporal. Em tempos de polarização, sua busca pelo diálogo entre o eu e o mundo, entre o local e o global, entre a tradição e a modernidade, continua sendo um caminho necessário.</p>
-            </div>
-
-            <div class="itabira-section" style="margin-top: 3rem;">
-                <h3 style="color: #2c3e50; font-size: 1.8rem; margin-bottom: 2rem;">Drummond e as Tragédias de Mariana e Brumadinho</h3>
-                <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 1.5rem;">
-                    As tragédias ambientais de Mariana (2015) e Brumadinho (2019), causadas pelo rompimento de barragens de mineração em Minas Gerais, trouxeram nova dimensão à crítica drummondiana sobre a exploração mineral. O poeta que nasceu na "cidade de ferro" e viu Itabira ser transformada pela mineração parece ter antecipado literariamente os custos humanos e ambientais dessa atividade.
-                </p>
-                <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 1.5rem;">
-                    Quando Drummond escrevia sobre o ferro nas almas itabiranas, sobre a perda das fazendas e da paisagem de sua infância, ele não apenas registrava memórias pessoais, mas alertava para um modelo de desenvolvimento que coloca o lucro acima da vida. As 270 mortes e o desastre ambiental de Brumadinho, a apenas 100 km de Itabira, ecoam como confirmação trágica das preocupações do poeta.
-                </p>
-                <p style="font-size: 1.1rem; line-height: 1.8; color: #333;">
-                    A lama que destruiu comunidades e o Rio Doce carrega também a pergunta que Drummond fazia: que desenvolvimento é esse que nos enriquece materialmente enquanto empobrece nossa humanidade? Sua poesia nos convida a repensar nossa relação com a terra, com o progresso e com as gerações futuras.
-                </p>
-            </div>
-
-            <div class="impact-cards" style="margin-top: 3rem;">
-                <div class="impact-card">
-                    <div class="impact-icon">📚</div>
-                    <h4 class="impact-title">Legado Literário</h4>
-                    <p class="impact-text">Drummond deixou mais de 50 livros publicados e é considerado o maior poeta brasileiro do século XX. Sua obra é estudada em escolas e universidades de todo o mundo.</p>
-                </div>
-                <div class="impact-card">
-                    <div class="impact-icon">🌍</div>
-                    <h4 class="impact-title">Consciência Ambiental</h4>
-                    <p class="impact-text">Sua crítica à mineração predatória e à destruição da natureza se revela profética diante dos desastres ambientais contemporâneos em Minas Gerais.</p>
-                </div>
-                <div class="impact-card">
-                    <div class="impact-icon">💭</div>
-                    <h4 class="impact-title">Humanismo Poético</h4>
-                    <p class="impact-text">Drummond colocou o ser humano no centro de sua poesia, com suas contradições, dores e esperanças, criando uma obra profundamente humanista.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="section-header">
-                <h2 class="section-title">Principais Obras</h2>
-                <p class="section-subtitle">Uma seleção dos livros mais importantes</p>
-            </div>
-
-            <div class="phases-grid">
-                <div class="phase-card">
-                    <h3 class="phase-title">Alguma Poesia (1930)</h3>
-                    <p class="phase-description">Obra de estreia que inclui "No meio do caminho" e "Poema de sete faces". Marca o início do Modernismo na poesia de Drummond com linguagem coloquial e ironia.</p>
-                </div>
-                <div class="phase-card">
-                    <h3 class="phase-title">Sentimento do Mundo (1940)</h3>
-                    <p class="phase-description">Transição para uma poesia mais participante, refletindo as angústias da Segunda Guerra Mundial e as tensões sociais do período.</p>
-                </div>
-                <div class="phase-card">
-                    <h3 class="phase-title">A Rosa do Povo (1945)</h3>
-                    <p class="phase-description">Obra de maior engajamento político e social. Considerada uma das mais importantes da literatura brasileira, expressa solidariedade humana e esperança.</p>
-                </div>
-                <div class="phase-card">
-                    <h3 class="phase-title">Claro Enigma (1951)</h3>
-                    <p class="phase-description">Marca o retorno à introspecção com profundidade filosófica. Poemas sobre o tempo, a morte e o sentido da existência com maestria formal.</p>
-                </div>
-                <div class="phase-card">
-                    <h3 class="phase-title">Boitempo (1968-1979)</h3>
-                    <p class="phase-description">Trilogia memorialista que revisita a infância em Itabira. Recupera pessoas, lugares e episódios com lirismo e nostalgia, celebrando as raízes mineiras.</p>
-                </div>
-                <div class="phase-card">
-                    <h3 class="phase-title">Corpo (1984)</h3>
-                    <p class="phase-description">Uma das últimas obras, trata do corpo e da sensualidade com delicadeza e erotismo, mostrando a vitalidade poética de Drummond até o fim da vida.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="section-header">
-                <h2 class="section-title">Galeria de Imagens</h2>
-                <p class="section-subtitle">Itabira, paisagens e contextos históricos</p>
-            </div>
-
-            <div class="phases-grid" style="grid-template-columns: repeat(3, 1fr);">
-                <div style="text-align: center;">
-                    <img src="img/img3.png" alt="Mineração em Minas Gerais" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
-                    <p style="font-size: 0.9rem; color: #666;">Mineração em Minas Gerais</p>
-                </div>
-                <div style="text-align: center;">
-                    <img src="img/img2.png" alt="Paisagem de Minas Gerais" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
-                    <p style="font-size: 0.9rem; color: #666;">Paisagens mineiras</p>
-                </div>
-                <div style="text-align: center;">
-                    <img src="https://images.unsplash.com/photo-1481277542470-605612bd2d61?w=400&h=300&fit=crop" alt="Livros de poesia" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
-                    <p style="font-size: 0.9rem; color: #666;">A poesia modernista</p>
-                </div>
-                <div style="text-align: center;">
-                    <img src="img/image.png" alt="Interior mineiro" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
-                    <p style="font-size: 0.9rem; color: #666;">Interior de Minas Gerais</p>
-                </div>
-                <div style="text-align: center;">
-                    <img src="img/rpp-cinelandiaheader-970x373.jpg" alt="Contexto histórico" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
-                    <p style="font-size: 0.9rem; color: #666;">Brasil do século XX</p>
-                </div>
-                <div style="text-align: center;">
-                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&h=300&fit=crop" alt="Céu e nuvens" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
-                    <p style="font-size: 0.9rem; color: #666;">A imensidão poética</p>
-                </div>
-            </div>
-        </section>
+  <header>
+    <div class="header-content">
+      <h1 class="site-title">Carlos Drummond de Andrade</h1>
+      <p class="site-subtitle">Poesia, Cidade e Mineração</p>
+      <nav>
+        <ul>
+          <li><a href="#home">Início</a></li>
+          <li><a href="#biografia">Biografia</a></li>
+          <li><a href="#fases">Fases Literárias</a></li>
+          <li><a href="#itabira">Itabira & Mineração</a></li>
+          <li><a href="#reflexao">Reflexões</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-info">
-                <strong>Trabalho Interdisciplinar - 3ª Série Ômega</strong><br>
-                Escola SESI Rinaldo Campos Soares<br>
-                Disciplina: Interdisciplinar (Português e História)<br>
-                Professores: Mattheus Rosa e Sarah
-            </div>
-            <div class="footer-info" style="margin-top: 1.5rem;">
-                <strong>Tema:</strong> Carlos Drummond de Andrade – Poesia, Cidade e Mineração<br>
-                Explorando as conexões entre literatura, história e impacto socioambiental
-            </div>
-            <div class="footer-credits">
-                © 2025 - Este site foi desenvolvido como projeto educacional.<br>
-                Todas as informações foram pesquisadas e compiladas pelos alunos.<br>
-                Imagens: Unsplash (uso educacional)
-            </div>
-        </div>
-    </footer>
+  <section class="hero-section" id="home">
+    <div class="hero-content">
+      <h2 class="hero-title">O Poeta da Pedra</h2>
+      <p class="hero-quote">"No meio do caminho tinha uma pedra<br>tinha uma pedra no meio do caminho..."</p>
+      <p class="hero-author">— Alguma Poesia, 1928</p>
+    </div>
+  </section>
 
-    <script>
-        // Smooth scroll para navegação
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = document.querySelector(link.getAttribute('href'));
-                if(target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+  <div class="container">
+    <section class="section" id="reflexao">
+      <div class="section-header">
+        <h2 class="section-title">Reflexões Contemporâneas</h2>
+        <p class="section-subtitle">Drummond e os desafios atuais</p>
+      </div>
 
-        // Animação de entrada dos elementos
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+      <div class="reflection-box">
+        <h3>Drummond e as Tragédias de Mariana e Brumadinho</h3>
+        <p>
+          As tragédias de Mariana (2015) e Brumadinho (2019), causadas pelo rompimento de barragens de mineração em Minas Gerais, evidenciam a atualidade da crítica drummondiana à exploração mineral. 
+          O poeta antecipou, em versos, os dilemas entre progresso e destruição ambiental.
+        </p>
+        <p>
+          Quando Drummond fala de Itabira — “noventa por cento de ferro nas calçadas, oitenta por cento de ferro nas almas” — ele retrata não só sua cidade natal, mas o Brasil contemporâneo, em conflito entre o desenvolvimento econômico e o respeito à vida e à natureza.
+        </p>
+      </div>
+    </section>
+  </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.style.opacity = '0';
-                    entry.target.style.transform = 'translateY(40px)';
-                    setTimeout(() => {
-                        entry.target.style.transition = 'all 0.8s ease';
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, 100);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.phase-card, .timeline-item, .impact-card, .itabira-section').forEach(element => {
-            observer.observe(element);
-        });
-
-        // Efeito parallax suave no hero
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero-section');
-            if(hero && scrolled < window.innerHeight) {
-                hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
-            }
-        });
-
-        // Destaque da navegação ativa
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('.section');
-            const navLinks = document.querySelectorAll('nav a');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if(pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.style.background = '';
-                if(link.getAttribute('href') === '#' + current) {
-                    link.style.background = 'rgba(255,255,255,0.2)';
-                }
-            });
-        });
-    </script>
+  <footer>
+    <div class="footer-content">
+      <p class="footer-info">Trabalho escolar sobre Carlos Drummond de Andrade — Poesia, Cidade e Mineração.</p>
+      <p class="footer-credits">&copy; 2025 | Desenvolvido por Christian Bragança</p>
+    </div>
+  </footer>
 </body>
 </html>
